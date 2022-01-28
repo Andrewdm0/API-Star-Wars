@@ -1,0 +1,41 @@
+div#info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-self: center;
+}
+
+div#info div{
+    min-width: 15rem;
+    text-align: center;
+    list-style: none;
+    background-color: white;
+    margin: 0.5rem;
+    border: 2px solid black;
+    color: black;
+}
+
+div#info div img{
+    margin: top;
+}
+
+.imagens{
+    margin-top: 10px;
+    max-height: 10rem;
+    border: 2px solid black;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+body h1{
+    color: black;
+    font-size: 50px;
+    text-shadow: 0 0 3px #FCEE58, 0 0 5px #FCEE58;
+}
