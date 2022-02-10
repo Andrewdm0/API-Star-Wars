@@ -1,21 +1,21 @@
-div#info{
+#info{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-self: center;
 }
 
-div#info div{
+#info div{
     min-width: 15rem;
     text-align: center;
     list-style: none;
     background-color: white;
     margin: 0.5rem;
-    border: 2px solid black;
     color: black;
+    box-shadow: 0px 0px 10px #FCEE58;
 }
 
-div#info div img{
+#info div img{
     margin: top;
 }
 
@@ -38,4 +38,11 @@ body h1{
     color: black;
     font-size: 50px;
     text-shadow: 0 0 3px #FCEE58, 0 0 5px #FCEE58;
+}
+
+.barraPesquisa{
+    height: 30px;
+    box-shadow: 0px 0px 5px #FCEE58;
+    border: none;
+    margin-bottom: 20px;
 }
