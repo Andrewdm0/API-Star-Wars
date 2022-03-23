@@ -12,7 +12,6 @@ for(let i=1;i<82;i++){
 
 Promise.all(personsPromises)
   .then(persons => {
-    persons = persons.slice(0,10)
     input = document.getElementById("pesquisa")
     const lisPersons = persons.reduce((accumulator,person,index) =>{
     accumulator += `<div>
