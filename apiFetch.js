@@ -12,21 +12,18 @@ for(let i=1;i<82;i++){
 
 Promise.all(personsPromises)
   .then(persons => {
-    // console.log(persons);
+    persons = persons.slice(0,10)
     input = document.getElementById("pesquisa")
     const lisPersons = persons.reduce((accumulator,person,index) =>{
-      accumulator += `<div>
+    accumulator += `<div>
                         <img class="imagens" src= https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg>
                         <h3 class= "card">${person.name}</h3>
                         <p class="card-subtitle">${person.gender}</p>
                         <p>${person.url}</p>
-                      </div>`
-                      
-      return divInfo.innerHTML = accumulator
-    },'')
-    // console.log(lisPersons);
+                        </div>`        
+                      return divInfo.innerHTML = accumulator
+                    },'')
   })
-
 function pesquisa() {
 
   var input, filter,divs
@@ -58,4 +55,36 @@ function pesquisa() {
     
   }
 
+}
+
+
+function filter_gender(gender){
+
+    var input, divs
+  
+    input = document.getElementById("gender")
+    divs = document.getElementsByTagName("div")
+  
+    for (let i = 0; i < divs.length; i++) {
+  
+      div = divs[i].getElementsByTagName("p")[0]
+  
+      textValue = div.textContent || div.innerText;
+  
+      if(textValue == gender){
+  
+        divs[i].style.display = ""
+        console.log(textValue + " Deu boa");
+  
+      }else if(gender == "all"){
+        divs[i].style.display = ""
+        console.log(textValue + " Deu boa");
+      }else{
+  
+        divs[i].style.display = "none"
+        console.log(textValue + " Deu ruim");
+  
+      }
+      
+    }
 }
