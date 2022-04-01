@@ -4,12 +4,50 @@ const divInfo = document.querySelector("#info")
 const getPersonUrl = (id) => `https://swapi.dev/api/people/?page=${id}`
 const pokemons = []
 
+function proxPage() {
+  fecthPokemon(3)
+}
+
+function prevPage() {
+  fecthPokemon(1)
+}
+//Correção do index das imagens
+function indexFunc(id,index,num){
+
+  if(id == 2){
+
+    if (index >= 7) {
+
+      return index = index + num + id
+      
+    }else{
+
+    return index = index + num + 1
+
+    }
+
+  }else if(id == 1){
+
+    return index = index + num + 1
+
+  }else{
+
+    return index = index + num + 2
+
+  }
+
+}
+
+//Função fetch
 function fecthPokemon(id = 1){
 
   let num = (id - 1) * 10
+
   fetch(getPersonUrl(id))
   .then(response => response.json())
-  .catch(console.log('Erro'))
+  .catch()
+
+  //Guardando a resposta das promises dentro de uma lista
   .then(pokemon => {
   
       for (let i = 0; i <= 10; i++) {
@@ -17,11 +55,12 @@ function fecthPokemon(id = 1){
           pokemons.push(pokemon.results[i])
 
       }
-      
-      pokemons.reduce((accumulator,pokemon,index) => {
-          
+
+      //Usando reduce para transformar cada item da lista em um html e jogar no index.html
+      pokemons.reduce((accumulator,pokemon,index=1) => {
+          console.log(index);
           accumulator += `<div>
-                    <img class="imagens" src= https://starwars-visualguide.com/assets/img/characters/${index + 12}.jpg>
+                    <img class="imagens" src= https://starwars-visualguide.com/assets/img/characters/${indexFunc(id,index,num)}.jpg>
                     <h3 class= "card">${pokemon.name}</h3>
                     <p class="card-subtitle">${pokemon.gender}</p>
                     <p>${pokemon.url}</p>
@@ -33,8 +72,6 @@ function fecthPokemon(id = 1){
   })
       
 }
-
-fecthPokemon(2)
 
 //Função de pesquisa
 function pesquisa() {
@@ -101,3 +138,5 @@ function filter_gender(gender){
       
     }
 }
+
+fecthPokemon(3)
