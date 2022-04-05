@@ -4,13 +4,7 @@ const divInfo = document.querySelector("#info")
 const getPersonUrl = (id) => `https://swapi.dev/api/people/?page=${id}`
 const pokemons = []
 
-function proxPage() {
-  fecthPokemon(3)
-}
 
-function prevPage() {
-  fecthPokemon(1)
-}
 //Correção do index das imagens
 function indexFunc(id,index,num){
 
@@ -39,13 +33,14 @@ function indexFunc(id,index,num){
 }
 
 //Função fetch
-function fecthPokemon(id = 1){
+function fecthPokemon(id){
 
+  const pokemons = []
+  
   let num = (id - 1) * 10
 
   fetch(getPersonUrl(id))
   .then(response => response.json())
-  .catch()
 
   //Guardando a resposta das promises dentro de uma lista
   .then(pokemon => {
@@ -57,20 +52,19 @@ function fecthPokemon(id = 1){
       }
 
       //Usando reduce para transformar cada item da lista em um html e jogar no index.html
-      pokemons.reduce((accumulator,pokemon,index=1) => {
-          console.log(index);
+      pokemons.reduce((accumulator,pokemon,index) => {
           accumulator += `<div>
                     <img class="imagens" src= https://starwars-visualguide.com/assets/img/characters/${indexFunc(id,index,num)}.jpg>
                     <h3 class= "card">${pokemon.name}</h3>
                     <p class="card-subtitle">${pokemon.gender}</p>
                     <p>${pokemon.url}</p>
                     </div>`
-
-                      return divInfo.innerHTML = accumulator
-      },'')
-      
+                    console.log(accumulator);
+                    return divInfo.innerHTML = accumulator
+                  },'')
+                  
   })
-      
+      return id
 }
 
 //Função de pesquisa
@@ -139,4 +133,13 @@ function filter_gender(gender){
     }
 }
 
-fecthPokemon(3)
+
+function nextPage() {
+  return fecthPokemon(id++)
+}
+
+function prevPage() {
+  return fecthPokemon(id--)
+}
+
+fecthPokemon(4)
