@@ -41,8 +41,57 @@ body h1{
 }
 
 .barraPesquisa{
+    background-color: rgba(255, 255, 255, 0.192);
     height: 30px;
-    box-shadow: 0px 0px 5px #FCEE58;
+    box-shadow: 0px 0px 10px #FCEE58;
     border: none;
     margin-bottom: 20px;
+}
+
+.barraPesquisa::placeholder{
+    color: #fcee589a;
+}
+
+.filter{
+    color: black;
+    font: 20pt;
+    text-shadow: 0 0 3px #FCEE58, 0 0 5px #FCEE58;
+}
+
+.filter input{
+    max-height: 25px;
+    background-color: black;
+    color: #FCEE58;
+    box-shadow: 0px 0px 10px #FCEE58;
+    font-size: 10pt;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+select{
+    background-color: black;
+    color: #fcee589a;
+    border: none;
+    box-shadow: 0px 0px 10px #FCEE58;
+    border-radius: 5px;
+}
+
+.paginacao{
+    display: flex;
+    font-size: 15pt;
+    color: black;
+    text-shadow: 0 0 3px #FCEE58, 0 0 5px #FCEE58;
+    align-items: center;
+}
+
+.paginacao button{
+    max-height: 25px;
+    background-color: black;
+    color: #FCEE58;
+    box-shadow: 0px 0px 10px #FCEE58;
+    font-size: 13pt;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
 }

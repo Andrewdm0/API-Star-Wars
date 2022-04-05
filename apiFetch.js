@@ -3,6 +3,11 @@ const genderTxt = document.querySelector("h2#gender")
 const divInfo = document.querySelector("#info")
 const getPersonUrl = (id) => `https://swapi.dev/api/people/?page=${id}`
 const pokemons = []
+const paginaAtual = document.getElementById("paginaAtual")
+
+const state = {
+  page: 1
+}
 
 
 //Correção do index das imagens
@@ -34,9 +39,8 @@ function indexFunc(id,index,num){
 
 //Função fetch
 function fecthPokemon(id){
-
   const pokemons = []
-  
+  id = state.page
   let num = (id - 1) * 10
 
   fetch(getPersonUrl(id))
@@ -64,7 +68,7 @@ function fecthPokemon(id){
                   },'')
                   
   })
-      return id
+  paginaAtual.innerHTML = state.page
 }
 
 //Função de pesquisa
@@ -135,11 +139,11 @@ function filter_gender(gender){
 
 
 function nextPage() {
-  return fecthPokemon(id++)
+  return fecthPokemon(state.page++)
 }
 
 function prevPage() {
-  return fecthPokemon(id--)
+  return fecthPokemon(state.page--)
 }
 
-fecthPokemon(4)
+fecthPokemon()
