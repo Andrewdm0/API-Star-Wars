@@ -6,7 +6,9 @@ const pokemons = []
 const paginaAtual = document.getElementById("paginaAtual")
 
 const state = {
-  page: 1
+  page: 1,
+  maxPage:8,
+  minPage:2,
 }
 
 
@@ -139,11 +141,21 @@ function filter_gender(gender){
 
 
 function nextPage() {
-  return fecthPokemon(state.page++)
+
+  if (state.page <= state.maxPage){
+    return fecthPokemon(state.page++)
+  }else {
+    return fecthPokemon(state.page)
+  }
+
 }
 
 function prevPage() {
-  return fecthPokemon(state.page--)
+  if (state.page >= state.minPage){
+    return fecthPokemon(state.page--)
+  }else {
+    return fecthPokemon(state.page)
+  }
 }
 
 fecthPokemon()
