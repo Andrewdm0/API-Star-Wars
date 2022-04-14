@@ -3,14 +3,16 @@ const genderTxt = document.querySelector("h2#gender")
 const divInfo = document.querySelector("#info")
 const getPersonUrl = (id) => `https://swapi.dev/api/people/?page=${id}`
 const pokemons = []
+const personsPromises = []
 const paginaAtual = document.getElementById("paginaAtual")
 
+
+//Estado da pagina
 const state = {
   page: 1,
   maxPage:8,
   minPage:2,
 }
-
 
 //Correção do index das imagens
 function indexFunc(id,index,num){
@@ -37,6 +39,33 @@ function indexFunc(id,index,num){
 
   }
 
+}
+
+//Função fetch All
+function fetchAll(){
+
+  for(let i=1;i<82;i++){
+
+    personsPromises.push(fetch(`https://swapi.dev/api/people/${i}`).then(response => response.json()))
+
+  }
+
+  Promise.all(personsPromises)
+    .then(persons => {
+      console.log(persons);
+
+      const lisPersons = persons.reduce((accumulator,person,index) =>{
+        accumulator += `<div>
+                          <img class="imagens" src= https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg>
+                          <h3 class= "card">${person.name}</h3>
+                          <p class="card-subtitle">${person.gender}</p>
+                          <p>${person.url}</p>
+                        </div>`
+
+        return divInfo.innerHTML = accumulator
+      },'')
+      console.log(lisPersons);
+    })
 }
 
 //Função fetch
@@ -139,7 +168,7 @@ function filter_gender(gender){
     }
 }
 
-
+//Botoes para troca de página
 function nextPage() {
 
   if (state.page <= state.maxPage){
